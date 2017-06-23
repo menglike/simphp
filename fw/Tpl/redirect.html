@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>提示消息</title>
+		<link rel="stylesheet" type="text/css" href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script type="text/javascript" src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+        <script type="text/javascript" src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<div class='modal fade  text-center' id='notice'  > 		
+			<div class='modal-dialog'>
+				<div class='modal-content'>
+					<div class='modal-header'>
+						<span class='close' data-dismiss='modal'>&times;</span>
+						提示消息
+					</div>
+					<div class='modal-body'>
+						<?php if($type=='error'){ ?>
+							<?php echo $msg; ?> :(
+						<?php }else{ ?>
+							<?php echo $msg; ?> :)
+						<?php } ?>
+					</div>
+					<div class='modal-footer'>
+						在 <font color='red'><span id="sec"><?php echo $waitSecond ?></span></font> 秒之后自动跳转 <a class='btn btn-success' href="<?php echo 'http://www.baidu.com';?>">直接跳转</a> 
+			 			<button class='btn btn-error' onclick="stop(this)">停止</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		 <script>
+		 	$(function(){
+		 		$('#notice').modal('show');
+		 	}); 
+		 		var seco = document.getElementById("sec");
+				var time = '<?php echo $waitSecond; ?>' ;
+				var tt = setInterval(function(){
+						time--;
+						seco.innerHTML = Number(time);	
+						if(time<=0){
+							window.location.href= "<?php echo $jumpUrl;?>";
+							return false;
+						}
+					}, 1000);
+				function stop(obj){
+					clearInterval(tt);
+					obj.style.display="none";
+				}
+		</script>
+	</body>
+</html>
