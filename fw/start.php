@@ -17,8 +17,9 @@
   require ZENDFRAME.'/Common/functions.php';
   require ZENDFRAME.'/Base/Loader.class.php';   //引入自动加载类文件的文件
   spl_autoload_register('\Base\Loader::load_class');
-  \Base\Debug::start();
+  \Base\Debug::start(); //开启调试信息
   \Base\Simphp::run(); //运行应用
+
 
   
 

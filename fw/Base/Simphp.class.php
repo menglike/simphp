@@ -17,11 +17,14 @@ class Simphp {
 		  }
 		  require ZENDFRAME.'/Conf/config.php';	//加载框架默认的配置文件
 		  // 访问应用
-		  $app    = $urlArr['app'];
+		  $app = $urlArr['app'];
+		  define("APPLICATION",$app);
 		  // 访问模块名
 		  $module = $urlArr['module'];
+		  define("MODULE",$module);
 		  // 访问方法名
 		  $action = $urlArr['action'];
+		  define("ACTION",$action);
 		  $moduleName = $module.'Controller';
 
 		  file_exists(APP.'/controller/'.$module.'.class.php')          ? require_once(APP.'/controller/'.$module.'.class.php')      : die(APP.'/controller/'.$module.'.class.php文件不存在:(');

@@ -1,6 +1,7 @@
 <?php
 namespace Base;
 class Controller{
+		const WAIT = 2;
 		public function __constuct( $module, $action)
 		{
 			// parent::__construct( $module, $action );
@@ -17,18 +18,29 @@ class Controller{
 		}
 
 		//中间页面
-		public  function success($jumpUrl='http://www.baidu.com',$msg='对不起,您访问的页面不存在',$waitSecond=2)
+		public  function redirect($jumpUrl='http://www.baidu.com',$msg='对不起,您访问的页面不存在',$waitSecond=self::WAIT,$status='success')
 		{
-			$type = 'success';
+			$url = $this->dealJumpUrl($jumpUrl);
+			$type = $status == 'success' ? 'success': 'error';
 			require ZENDFRAME.'/Tpl/redirect.html';
 		}
 
-		//中间页面
-		public  function error($jumpUrl='http://www.baidu.com',$msg='对不起,您访问的页面不存在',$waitSecond=2)
+		//判断跳转到应用内
+		private function dealJumpUrl($jumpUrl)
 		{
-			$type = 'error';
-			require ZENDFRAME.'/Tpl/redirect.html';
+			$urlArr = explode('|',$jumpUrl);
+			$urlNum = count($urlArr);
+			switch($urlNum){
+				case 1 :
+					return 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['SCRIPT_NAME'].'/'.APPLICATION.'/'.MODULE.'/'.$urlArr[0];
+					break;
+				case 2 :
+					return  'http://'.$_SERVER['HTTP_HOST'].$_SERVER['SCRIPT_NAME'].'/'.APPLICATION.'/'.$urlArr[0].'/'.$urlArr[1];
+					break;
+				case 3 :
+					return  'http://'.$_SERVER['HTTP_HOST'].$_SERVER['SCRIPT_NAME'].'/'.$urlArr[0].'/'.$urlArr[1].'/'.$urlArr[2];
+					break;
+			}
 		}
-
 		
 }
