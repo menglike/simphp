@@ -1,5 +1,5 @@
 <?php
-#描述:加载所有相关的类
+#描述:加载所有相关的核心类库
 namespace Base;
 class Loader {
     public static function load_class($class)

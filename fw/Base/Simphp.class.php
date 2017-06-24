@@ -29,6 +29,12 @@ class Simphp {
 		  $controlName = '\\Base\\Controller\\'.$moduleName;
 		  $obj = new  $controlName;
 		  $obj->$action();
+		  global $debug;
+		  //程序中要输出debug调试信息
+		  if( $debug || (defined(DEBUG) && DEBUG==1) ){
+			  DEBUG::stop();
+			  Debug::showMsg();
+		  }
 	}
 
 

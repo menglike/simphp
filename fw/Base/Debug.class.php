@@ -28,22 +28,22 @@ class Debug{
 		$runTime =  round(self::$endTime - self::$startTime,4);
 		if(count(self::$info)>0){
 			self::$msg .= '[info]:';
-			foreach(self::$info as $k=>$v){
+			foreach(self::$info as $v){
 				self::$msg .= $v.'<br />';	
 			}
 		}
 		if(count(self::$sql)>0){
 			self::$msg .= '[sql]:';
-			foreach(self::$sql as $k=>$v){
+			foreach(self::$sql as $v){
 				self::$msg .= $v.'<br />';	
 			}
 		}	
 
 		self::$msg = "<div style='border:1px solid red;'>".self::$msg;
-		self::$msg .= '开始时间:'.self::$startTime.'<br/>';
-		self::$msg .= '结束时间:'.self::$endTime.'<br/>';
+		self::$msg .= '开始时间:'.self::$startTime.' ms<br/>';
+		self::$msg .= '结束时间:'.self::$endTime.' ms<br/>';
 		self::$msg .= '<br />总共运行了'.$runTime.' ms 微秒';
-		echo self::$msg .= '<br />总消耗'.(self::$endMem -  self::$startMem).' bytes 内存</div>';
+		echo self::$msg .= '<br />总消耗'.round((self::$endMem -  self::$startMem)/1024,2).' KB 内存</div>';
 	}
 
 	static function start(){
