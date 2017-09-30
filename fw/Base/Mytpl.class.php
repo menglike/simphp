@@ -1,7 +1,8 @@
 <?php
 namespace Base;
 class Mytpl {
-	static $left_delimiter  = '{';
+
+	static $left_delimiter  = '{'; #
 	static $right_delimiter = '}';
 	static $tmp = '';
 	static $val = '';
@@ -13,24 +14,33 @@ class Mytpl {
 	}
 
 	//展示页面
-	public static function display($path)
+	public static function display($path='')
 	{
-		$viewTpl = APP.'/view/'.$path.'.html';
-		$md5 = md5($viewTpl);
+		if( empty($path) ) $path = MODULE.'/'.ACTION  ;
+		$viewTpl   = APP.'/view/'.$path.'.html';
+		if( !file_exists($viewTpl) ) die('<br/>文件不存在,请先创建'.$viewTpl.'文件:(');
+		$md5       = md5($viewTpl);
 		$cacheFile = PROJECT.'/runtime/cache/filecache/'.$md5.'.php';
 		if( !empty(self::$arr) ){
 			foreach(self::$arr as $k=>$v){
 				${ $v[0] } = $v[1];
 			}
 		}
-		if( !file_exists($viewTpl) ) die('<hr/>请先创建'.$viewTpl.'文件:(');
 
-		//关闭缓存 或者 缓存文件不存在 或者 缓存时间过期 都生成新的一份缓存
-		if( !file_exists($cacheFile) || CACHESTART == 0 || (CACHESTART && time()-filemtime($viewTpl)>CACHETIME) ){
-			$template  =  file_get_contents($viewTpl)  ;
-
-			/* 这里正则匹配 做个简单的模板引擎 */	
-			preg_match_all('/\{include (.*)\}/',$template,$match);
+		//关闭缓存 或者 缓存文件不存在 或者 缓存时间过期 都生成(旧的存在就必须要删掉)新的一份缓存
+		if( !file_exists($cacheFile) || CACHESTART === 0 || (CACHESTART && time()-filemtime($viewTpl)>CACHETIME) ){
+			$template  =  file_get_contents($viewTpl);
+			if( !is_writable( dirname($cacheFile) ) )     die(dirname($cacheFile).' 目录不可写:(');
+			if( file_exists($cacheFile) ) unlink($cacheFile);
+			exit;
+			/**
+				 正则匹配 做个简单的模板引擎 
+				 可以使用的标签 
+				 include  if elseif else  foreach 
+				 {include     file='public/a.html'}
+				 <foreach name='
+			*/	
+			preg_match_all('/\{include(.*)\}/',$template,$match);
 			$tpl = $template;
 			foreach($match as $k=>$v){
 				$content = file_get_contents(APP."/view/".$match[1][$k].".html");

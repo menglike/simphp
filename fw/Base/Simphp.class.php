@@ -30,18 +30,20 @@ class Simphp {
 		  $module = $arr['module'];
 		  // 访问方法名
 		  $action = $arr['action'];
+		  define('MODULE',$module);
+		  define('ACTION',$action);
 		  
 		  $moduleName = $module.'Controller';
 
 		     file_exists(APP.'/controller/'.$module.'.class.php')      ? require_once(APP.'/controller/'.$module.'.class.php')      : die(APP.'/controller/'.$module.'.class.php 文件不存在:(');
 		  if(file_exists(APP.'/model/'     .$module.'Model.class.php') ) require_once(APP.'/model/'.     $module.'Model.class.php') ;
-		  $controlName = '\\Base\\Controller\\'.$moduleName;
-		  $obj = new $controlName;
+		  $controlName = '\\'.ucfirst(trim(APP_NAME,'/')).'\\Controller\\'.$moduleName;
+		  $obj = new $controlName($module,$action);
 		  $obj->$action();
 	}	
 
-
-	public static function secureFilter()
+	#安全过滤函数 过滤sql注入 xss
+	public static function secureFilter($params)
 	{
 
 	}

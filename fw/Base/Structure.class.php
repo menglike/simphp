@@ -7,25 +7,25 @@ class Structure{
 		$directory =  array(
 			//文件目录|权限|提示信息
 			array(APP,                                   0755, "应用目录 ".trim(APP_NAME,'/')." 创建成功<br />"),   //项目目录
-			array(PROJECT.'/runtime',                    0755, "项目的临时目录".PROJECT.'/runtime'.              "创建成功<br />"),   //项目的临时目录
-			array(PROJECT.'/runtime/cache',              0755, "  -项目的缓存目录".PROJECT.'/runtime/cache'.        "创建成功<br />"),   //项目的缓存目录
-			array(PROJECT.'/runtime/cache/compile',      0777, "  -项目的编译目录".PROJECT.'/runtime/cache/compile'."创建成功<br />"),   //项目的编译目录(目录可写)
-			array(PROJECT.'/runtime/cache/log',          0777, "  -项目的日志目录".PROJECT.'/runtime/cache/log'.    "创建成功<br />"),   //项目的日志目录(目录可写)
-			array(PROJECT.'/runtime/cache/filecache',    0777, "  -项目的文件缓存目录".PROJECT.'/runtime/cache/filecache'.    "创建成功<br />"),   //项目的日志目录(目录可写)
+			array(PROJECT.'/runtime',                    0755, "项目的临时目录 ".PROJECT.'/runtime'.              " 创建成功<br />"),   //项目的临时目录
+			array(PROJECT.'/runtime/cache',              0755, "-项目的缓存目录 ".PROJECT.'/runtime/cache'.        " 创建成功<br />"),   //项目的缓存目录
+			array(PROJECT.'/runtime/cache/compile',      0777, "&nbsp;&nbsp;-项目的编译目录 ".PROJECT.'/runtime/cache/compile'." 创建成功<br />"),   //项目的编译目录(目录可写)
+			array(PROJECT.'/runtime/cache/log',          0777, "&nbsp;&nbsp;-项目的日志目录 ".PROJECT.'/runtime/cache/log'.    " 创建成功<br />"),   //项目的日志目录(目录可写)
+			array(PROJECT.'/runtime/cache/filecache',    0777, "&nbsp;&nbsp;-项目的文件缓存目录 ".PROJECT.'/runtime/cache/filecache'.    " 创建成功<br />"),   //项目的日志目录(目录可写)
 
-			array(PROJECT.'/public/',                               0755, "项目的公共资源目录".   PROJECT.'/public'.                                 "创建成功<br />"),   //项目的资源目录
-			array(PROJECT.'/public/'.trim(APP_NAME,'/'),            0755, "  -项目的资源目录".       PROJECT.'/public/'. trim(APP_NAME,'/').            "创建成功<br />"),   //项目的资源目录
-			array(PROJECT.'/public/'.trim(APP_NAME,'/').'/images',  0755, "	 -项目的资源images目录". PROJECT.'/public/'. trim(APP_NAME,'/').'/images' . "创建成功<br />"),   //项目的资源目录
-			array(PROJECT.'/public/'.trim(APP_NAME,'/').'/css',     0755, "	 -项目的资源css目录".    PROJECT.'/public/'. trim(APP_NAME,'/').'/css'    . "创建成功<br />"),   //项目的资源目录
-			array(PROJECT.'/public/'.trim(APP_NAME,'/').'/js',      0755, "	 -项目的资源js目录".     PROJECT.'/public/'. trim(APP_NAME,'/').'/js'     . "创建成功<br />"),   //项目的资源目录
-			array(PROJECT.'/public/'.trim(APP_NAME,'/').'/uploads', 0777, "	 -项目的资源uploads目录".PROJECT.'/public/'. trim(APP_NAME,'/').'/uploads'. "创建成功<br />"),   //项目的资源目录
+			array(PROJECT.'/public/',                               0755, "项目的公共资源目录 ".   PROJECT.'/public'.                                 " 创建成功<br />"),   //项目的资源目录
+			array(PROJECT.'/public/'.trim(APP_NAME,'/'),            0755, "&nbsp;&nbsp;-项目的资源目录 ".       PROJECT.'/public/'. trim(APP_NAME,'/').            " 创建成功<br />"),   //项目的资源目录
+			array(PROJECT.'/public/'.trim(APP_NAME,'/').'/images',  0755, "&nbsp;&nbsp;-项目的资源images目录 ". PROJECT.'/public/'. trim(APP_NAME,'/').'/images' . " 创建成功<br />"),   //项目的资源目录
+			array(PROJECT.'/public/'.trim(APP_NAME,'/').'/css',     0755, "&nbsp;&nbsp;-项目的资源css目录 ".    PROJECT.'/public/'. trim(APP_NAME,'/').'/css'    . " 创建成功<br />"),   //项目的资源目录
+			array(PROJECT.'/public/'.trim(APP_NAME,'/').'/js',      0755, "&nbsp;&nbsp;项目的资源js目录 ".     PROJECT.'/public/'. trim(APP_NAME,'/').'/js'     . " 创建成功<br />"),   //项目的资源目录
+			array(PROJECT.'/public/'.trim(APP_NAME,'/').'/uploads', 0777, "&nbsp;&nbsp;-项目的资源uploads目录 ".PROJECT.'/public/'. trim(APP_NAME,'/').'/uploads'. " 创建成功<br />"),   //项目的资源目录
 
-			array(PROJECT.'/common',         0755, "项目的公共函数common目录".        PROJECT.'/common'.  "创建成功<br />"),   //项目的资源目录
-			array(PROJECT.'/extend',         0755, "项目的第三方扩展类extend目录".    PROJECT.'/extend'.  "创建成功<br />"),   //项目的资源目录
+			array(PROJECT.'/common',         0755, "项目的公共函数common目录 ".        PROJECT.'/common'.  " 创建成功<br />"),   //项目的资源目录
+			array(PROJECT.'/extend',         0755, "项目的第三方扩展类extend目录 ".    PROJECT.'/extend'.  " 创建成功<br />"),   //项目的资源目录
 
-			array(APP.'/controller',         0755, "项目".trim(APP_NAME,'/')."应用的控制器目录".APP.'/controller'.  "创建成功<br />"),   //项目的控制器目录
-		  	array(APP.'/model',              0755, "项目".trim(APP_NAME,'/')."应用的模型目录".  APP.'/model'.       "创建成功<br />"),   //项目的模型目录
-			array(APP.'/view',               0755, "项目".trim(APP_NAME,'/')."应用的视图目录".  APP.'/view'.        "创建成功<br />"),   //项目的视图目录
+			array(APP.'/controller',         0755, "项目 ".trim(APP_NAME,'/')." 应用的控制器目录 ".APP.'/controller'.  " 创建成功<br />"),   //项目的控制器目录
+		  	array(APP.'/model',              0755, "项目 ".trim(APP_NAME,'/')." 应用的模型目录 ".  APP.'/model'.       " 创建成功<br />"),   //项目的模型目录
+			array(APP.'/view',               0755, "项目 ".trim(APP_NAME,'/')." 应用的视图目录 ".  APP.'/view'.        " 创建成功<br />"),   //项目的视图目录
 		);
 
 		foreach($directory as $k=>$v){
@@ -64,16 +64,16 @@ function getRandCode(\$num = 6)
 	return substr( str_shuffle(\$str) ,0,\$num);
 }
 PA;
-		$writeContent_index = <<<PB
-<?php
-namespace Base\Controller;
-use Base\Controller;
+		$space = trim(APP_NAME,'/');
+		$writeContent_index = '<?php
+namespace '.ucfirst($space).'\\Controller;
+use Base\\Controller;
 class IndexController extends Controller{
 	public function index(){
 		echo "欢迎使用simplePHP框架!";
 	}
 }
-PB;
+';
 		$writeContent_config = <<<PC
 <?php
 	//这里可以对应用进行配置
