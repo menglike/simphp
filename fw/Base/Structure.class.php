@@ -13,7 +13,7 @@ class Structure{
 			array(PROJECT.'/runtime/cache/log',          0777, "  -项目的日志目录".PROJECT.'/runtime/cache/log'.    "创建成功<br />"),   //项目的日志目录(目录可写)
 			array(PROJECT.'/runtime/cache/filecache',    0777, "  -项目的文件缓存目录".PROJECT.'/runtime/cache/filecache'.    "创建成功<br />"),   //项目的日志目录(目录可写)
 
-			array(PROJECT.'/public/',                               0755, "项目的公共资源目录".      PROJECT.'/public'.                                 "创建成功<br />"),   //项目的资源目录
+			array(PROJECT.'/public/',                               0755, "项目的公共资源目录".   PROJECT.'/public'.                                 "创建成功<br />"),   //项目的资源目录
 			array(PROJECT.'/public/'.trim(APP_NAME,'/'),            0755, "  -项目的资源目录".       PROJECT.'/public/'. trim(APP_NAME,'/').            "创建成功<br />"),   //项目的资源目录
 			array(PROJECT.'/public/'.trim(APP_NAME,'/').'/images',  0755, "	 -项目的资源images目录". PROJECT.'/public/'. trim(APP_NAME,'/').'/images' . "创建成功<br />"),   //项目的资源目录
 			array(PROJECT.'/public/'.trim(APP_NAME,'/').'/css',     0755, "	 -项目的资源css目录".    PROJECT.'/public/'. trim(APP_NAME,'/').'/css'    . "创建成功<br />"),   //项目的资源目录
@@ -33,9 +33,6 @@ class Structure{
 				if( mkdir( $v[0] , $v[1])){	 //创建目录
 					echo $v[2];
 					//todo 是否创建文件锁
-					//判断是否某些文件是否可写
-				}else{
-						die('目录'.$v[0].'创建失败');
 				}
 			}
 		}
@@ -73,7 +70,7 @@ namespace Base\Controller;
 use Base\Controller;
 class IndexController extends Controller{
 	public function index(){
-		echo "欢迎使用simplePHP框架";
+		echo "欢迎使用simplePHP框架!";
 	}
 }
 PB;
@@ -86,18 +83,19 @@ return array(
 PC;
 		//需要写入文件内容
 		$writeFile = array(
-			array(PROJECT.'/common/functions.php' ,       $writeContent_functions ),
-			array(APP.    '/controller/Index.class.php',  $writeContent_index     ),
-			array(APP.'/config.php' ,                     $writeContent_config    ),
+			array(PROJECT.'/common/functions.php' ,       $writeContent_functions ),   
+			array(APP.'/config.php' ,                     $writeContent_config    ),   
+			array(APP.    '/controller/Index.class.php',  $writeContent_index     ),   
 		);
 
 		foreach($file as $k=>$v){
 			if( !file_exists( $v[0] ) ){
 				if(touch( $v[0] ) && is_writable($v[0]) ){
-						file_put_contents($v[0], $writeFile[$k][1]);
+						foreach($writeFile as $key=>$val){
+							//如果是要写入文件内容	
+							if ( $v[0] == $val[0] ) file_put_contents($v[0], $val[1]);
+						}
 						echo $v[2];
-				}else{
-					die('文件'.$v[0].'创建失败');
 				}
 				
 			}

@@ -1,9 +1,9 @@
 <?php
-#描述:加载所有相关的核心类库
 namespace Base;
-class Loader {
-    public static function load_class($class)
+class Loader{
+    public static  function load_class($class)
     {
+        echo '加载了'.$class.'<br />';
         $classArr = array(
             'Simphp'    =>'Base\Simphp',
             'Route'     =>'Base\Route',
@@ -15,8 +15,7 @@ class Loader {
             'Mytpl'     =>'Base\Mytpl',
             'Db'        =>'Base\Db'
         );
-        $className =  array_search($class,$classArr);
-        $className ? require_once(ZENDFRAME.'/Base/'.$className.'.class.php') : die('对不起,找不到该'.$class.'类!') ;
+        array_search($class,$classArr) ? require_once(ZENDFRAME.'/Base/'.array_search($class,$classArr).'.class.php') : die('对不起,找不到该'.$class.'类 :)') ;
     }
 
 }

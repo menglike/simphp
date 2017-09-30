@@ -10,20 +10,17 @@ class Db extends Model{
 			$st->execute($values);
 			switch($type){
 				case 'select':
-					return $st->fetchAll(PDO::FETCH_ASSOC);
-					break;
-				case 'selectOne':
-					return $st->fetch(PDO::FETCH_ASSOC);
-					break;
+				return $st->fetchAll(PDO::FETCH_ASSOC);
+				break;
 				case 'insert':
-					return parent::getInstance()->lastInsertId();
-					break;
+				return parent::getInstance()->lastInsertId();
+				break;
 				case 'update':
-					return $st->rowCount();
-					break;
+				return $st->rowCount();
+				break;
 			}
 		}catch(PDOException $e){
-			die( $e->getMessage() );
+			return $e->getMessage();
 		}	
 	}
 

@@ -18,9 +18,7 @@
 	}
 
 	function http_curl($url , $reqType='get', $resType='json' , $reqData=''){
-		if( in_array($resType,array('json','xml','html') ) ){
-			die('不存在的返回类型');
-		}
+
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $url);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -33,13 +31,15 @@
 			return curl_error( $ch );
 		}
 		curl_close( $ch );
+		
 		if($resType == 'json'){
 			return json_decode( $out ,true);
 		}elseif($resType == 'xml'){
-			return json_decode( json_encode(simplexml_load_string( $out )),true );
+			return simplexml_load_string( $out );
 		}elseif($resType == 'html'){
 			return $out;
 		}
+
 	}
 
 	/*快速实例化模型*/
