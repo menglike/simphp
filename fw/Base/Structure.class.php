@@ -9,7 +9,7 @@ class Structure{
 			array(APP,                                   0755, "应用目录 ".trim(APP_NAME,'/')." 创建成功<br />"),   //项目目录
 			array(PROJECT.'/runtime',                    0755, "项目的临时目录 ".PROJECT.'/runtime'.              " 创建成功<br />"),   //项目的临时目录
 			array(PROJECT.'/runtime/cache',              0755, "-项目的缓存目录 ".PROJECT.'/runtime/cache'.        " 创建成功<br />"),   //项目的缓存目录
-			array(PROJECT.'/runtime/cache/compile',      0777, "&nbsp;&nbsp;-项目的编译目录 ".PROJECT.'/runtime/cache/compile'." 创建成功<br />"),   //项目的编译目录(目录可写)
+			//array(PROJECT.'/runtime/cache/compile',      0777, "&nbsp;&nbsp;-项目的编译目录 ".PROJECT.'/runtime/cache/compile'." 创建成功<br />"),   //项目的编译目录(目录可写)
 			array(PROJECT.'/runtime/cache/log',          0777, "&nbsp;&nbsp;-项目的日志目录 ".PROJECT.'/runtime/cache/log'.    " 创建成功<br />"),   //项目的日志目录(目录可写)
 			array(PROJECT.'/runtime/cache/filecache',    0777, "&nbsp;&nbsp;-项目的文件缓存目录 ".PROJECT.'/runtime/cache/filecache'.    " 创建成功<br />"),   //项目的日志目录(目录可写)
 

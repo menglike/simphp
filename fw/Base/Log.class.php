@@ -1,4 +1,5 @@
 <?php
+//日志类
 namespace Base;
 class Log{
 	public static function record($msg)

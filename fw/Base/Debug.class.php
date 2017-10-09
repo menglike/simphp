@@ -1,4 +1,5 @@
 <?php
+//调试类
 namespace Base;
 class Debug{
 	//定义静态成员属性
@@ -42,8 +43,9 @@ class Debug{
 		self::$msg = "<div style='border:1px solid red;'>".self::$msg;
 		self::$msg .= '开始时间:'.self::$startTime.'<br/>';
 		self::$msg .= '结束时间:'.self::$endTime.'<br/>';
-		self::$msg .= '<br />总共运行了'.$runTime.' ms 微秒';
-		echo self::$msg .= '<br />总消耗'.(self::$endMem -  self::$startMem).' bytes 内存</div>';
+		self::$msg .= '<br />总共运行了 '.$runTime.' ms 微秒';
+		self::$msg .= '<br />总消耗'.(self::$endMem -  self::$startMem).' bytes 内存</div>';
+		echo self::$msg;
 	}
 
 	static function start(){

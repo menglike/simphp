@@ -15,9 +15,9 @@ class Route{
 				$array = array('app'=>$arr[0],'module'=>Ucfirst($arr[1]),'action'=>$arr[2]);
 			}
 		}else{
+			//普通模式
 			$m = !empty($_GET['m']) ? $_GET['m'] : 'Index';
 			$c = !empty($_GET['c']) ? $_GET['c'] : 'index';
-			//普通模式
 			$array = array('app'=>trim(APP_NAME,'/'),'module'=> $m,'action'=>$c);
 		}
 		return $array;

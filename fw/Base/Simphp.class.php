@@ -15,7 +15,6 @@ class Simphp {
 		  $pathinfo = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
 		  $arr = \Base\Route::parse($pathinfo); //解析url
 
-
 		  //加载应用自己的配置文件
 		  if( file_exists(APP.'/config.php') )   $configArr = require(APP.'/config.php');
 		  if( !empty($configArr) ){
