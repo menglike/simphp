@@ -1,7 +1,7 @@
 <?php
 namespace Base;
 class Mytpl {
-
+	
 	static $left_delimiter  = '{'; #左分割符
 	static $right_delimiter = '}'; #右分割符
 	static $tmp = '';
@@ -23,7 +23,6 @@ class Mytpl {
 		if( !file_exists($viewTpl) ) die('<br/>文件不存在,请先创建'.$viewTpl.'文件:(');
 		$md5       = md5($viewTpl);
 		$cacheFile = PROJECT.'/runtime/cache/filecache/'.$md5.'.php';
-		$compileFile = PROJECT.'/runtime/cache/compile/'.$md5.'.php';
 		if( !empty(self::$arr) ){
 			foreach(self::$arr as $k=>$v){
 				${ $v[0] } = $v[1];
@@ -66,15 +65,16 @@ class Mytpl {
 		
 	}
 
+	//递归 include 包含
 	public static function  replace_include($tpl){
 		preg_match_all('/\\'.self::$left_delimiter.'include\s(.*)\\'.self::$right_delimiter.'/',$tpl,$match);
 		foreach($match as $k=>$v){
+			if(!file_exists(APP."/view/".$match[1][$k].".html") ) die(APP."/view/".$match[1][$k].".html 文件不存在");
 			$content = file_get_contents(APP."/view/".$match[1][$k].".html");
 			//正则替换
 			$tpl     = preg_replace('/\\'.self::$left_delimiter.'include\s'. str_replace('/','\\/',$match[1][$k]).'\\'.self::$right_delimiter.'/',$content,$tpl); 
 		}
 		if(preg_match('/include/',$tpl)){
-			
 			$content = '';
 			$match = array();
 			return self::replace_include($tpl);

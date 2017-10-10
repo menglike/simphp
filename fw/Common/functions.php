@@ -43,9 +43,9 @@
 	}
 
 	/*快速实例化模型*/
-	function M( $module ){
+	function M( $module='Index' ){
 		if(file_exists( APP.'/model/'.$module.'Model.class.php' )){
-			$moduleModel = '\\Base\\Db\\'.$module.'Model';
+			$moduleModel = '\\'.APP_NAME.'\\Model\\'.$module.'Model';
 			return new $moduleModel;
 		}
 		else{
