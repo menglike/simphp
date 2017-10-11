@@ -16,6 +16,11 @@ class Controller {
 	//中间页面
 	public  function redirect($jumpUrl='http://www.baidu.com',$msg='对不起,您访问的页面不存在',$waitSecond=2)
 	{
+		if(count(explode('/',$jumpUrl))==2){
+			$jumpUrl = '/'.trim(APP_NAME,',').'/'.$jumpUrl;
+		}else{
+			$jumpUrl = '/'.trim(APP_NAME,',').'/'.MODULE.'/'.$jumpUrl;
+		}
 		$type = 'success';
 		require ZENDFRAME.'/Tpl/redirect.html';
 	}
@@ -23,6 +28,11 @@ class Controller {
 	//中间页面
 	public  function error($jumpUrl='http://www.baidu.com',$msg='对不起,您访问的页面不存在',$waitSecond=2)
 	{
+		if(count(explode('/',$jumpUrl))==2){
+			$jumpUrl = '/'.trim(APP_NAME,',').'/'.$jumpUrl;
+		}else{
+			$jumpUrl = '/'.trim(APP_NAME,',').'/'.MODULE.'/'.$jumpUrl;
+		}
 		$type = 'error';
 		require ZENDFRAME.'/Tpl/redirect.html';
 	}

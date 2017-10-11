@@ -22,7 +22,8 @@ class Simphp {
 		  		define($k,$v);//这里需要对$k，$v做判断
 		  }
 		  require ZENDFRAME.'/Conf/config.php';	//加载框架默认的配置文件
-
+		  dump($arr);
+		  exit;
 		  // 访问应用
 		  $app    = $arr['app'];
 		  // 访问模块名
@@ -36,8 +37,9 @@ class Simphp {
 
 		     file_exists(APP.'/controller/'.$module.'.class.php')      ? require_once(APP.'/controller/'.$module.'.class.php')      : die(APP.'/controller/'.$module.'.class.php 文件不存在:(');
 		  if(file_exists(APP.'/model/'     .$module.'Model.class.php') ) require_once(APP.'/model/'.     $module.'Model.class.php') ;
-		  echo APP.'/model/'.     $module.'Model.class.php';
 		  $controlName = '\\'.ucfirst(trim(APP_NAME,'/')).'\\Controller\\'.$moduleName;
+
+		  require PROJECT.'/common/functions.php';	//加载项目的函数文件
 		  $obj = new $controlName($module,$action);
 		  $obj->$action();
 	}	

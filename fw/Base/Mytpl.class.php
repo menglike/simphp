@@ -65,7 +65,7 @@ class Mytpl {
 		
 	}
 
-	//递归 include 包含
+	//处理递归 include 包含
 	public static function  replace_include($tpl){
 		preg_match_all('/\\'.self::$left_delimiter.'include\s(.*)\\'.self::$right_delimiter.'/',$tpl,$match);
 		foreach($match as $k=>$v){

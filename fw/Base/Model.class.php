@@ -9,9 +9,11 @@ class Model{
 	{
 		switch($dbType){
 			case 'master':
+				echo "<br />go master";
 		        return self::getMasterInstance();
 			break;
 			case 'slave':
+				echo "<br />go slave";
 				return self::getSlaveInstance();
 			break;
 		}

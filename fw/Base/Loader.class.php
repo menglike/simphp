@@ -14,7 +14,8 @@ class Loader{
             'Model'     =>'Base\Model',
             'Mytpl'     =>'Base\Mytpl',
             'Db'        =>'Base\Db',
-            'Cache'     =>'Base\Cache'
+            'Cache'     =>'Base\Cache',
+            'Redis'     =>'Base\Redis'
         );
         array_search($class,$classArr) ? require_once(ZENDFRAME.'/Base/'.array_search($class,$classArr).'.class.php') : die('对不起,找不到该'.$class.'类 :(') ;
     }
