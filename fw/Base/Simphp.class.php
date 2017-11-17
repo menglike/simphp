@@ -11,6 +11,7 @@ class Simphp {
 		  	foreach($server as $k=>$v)
 		  	  self::secureFilter($v);
 		  }
+		  require ZENDFRAME.'/Conf/config.php';	//加载框架默认的配置文件
 
 		  $pathinfo = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
 		  $arr = \Base\Route::parse($pathinfo); //解析url
@@ -21,8 +22,7 @@ class Simphp {
 		  	foreach($configArr as $k=>$v)
 		  		define($k,$v);//这里需要对$k，$v做判断
 		  }
-		  require ZENDFRAME.'/Conf/config.php';	//加载框架默认的配置文件
-		  
+
 		  // 访问应用
 		  $app    = $arr['app'];
 		  // 访问模块名
@@ -39,6 +39,7 @@ class Simphp {
 		  $controlName = '\\'.ucfirst(trim(APP_NAME,'/')).'\\Controller\\'.$moduleName;
 
 		  require PROJECT.'/common/functions.php';	//加载项目的函数文件,不允许方法名重名
+		  \Base\Filter::sql_xss_filter();
 		  $obj = new $controlName($module,$action);
 		  $obj->$action();
 	}	

@@ -6,7 +6,7 @@ class Route{
 		
 		if( $pathinfo ){
 			//pathinfo 模式
-			$arr   = explode('/', trim($pathinfo,'/') );
+			$arr   = explode(URLDELIMITER, trim($pathinfo,'/') );
 			$count = count( $arr );
 			if( $count == 1){
 				$array = array('app'=>$arr[0],'module'=>'Index','action'=>'index');
@@ -16,8 +16,7 @@ class Route{
 				$array = array('app'=>$arr[0],'module'=>Ucfirst($arr[1]),'action'=>$arr[2]);
 			}
 		}else{
-
-			$tmp = explode('/',trim($_SERVER['REQUEST_URI'],'/'));
+			$tmp = explode(URLDELIMITER,trim($_SERVER['REQUEST_URI'],'/'));
 			$count = count($tmp);
 			if( $count == 1){
 				$array = array('app'=>$tmp[0],'module'=>'Index','action'=>'index');

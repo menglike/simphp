@@ -15,3 +15,4 @@ defined('DEBUG')            || define( 'DEBUG'                  , 0 ); 			//定�
 defined('CACHESTART')       || define( 'CACHESTART'             , 1 ); 		    //设置页面是否静态化 true或者1开启 false或者0关闭
 defined('CACHETIME')        || define( 'CACHETIME'              , 60*60*24);     // 页面静态化缓存时间
 defined('CACHEDIR')         || define( 'CACHEDIR'               , PROJECT.'/runtime/cache/filecache/');    // 缓存目录
+defined('URLDELIMITER')     || define( 'URLDELIMITER'           , '-');    // url分隔符
